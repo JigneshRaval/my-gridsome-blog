@@ -5,37 +5,37 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: 'Gridsome Blog Starter',
-  siteDescription: 'A simple, hackable & minimalistic starter for Gridsome that uses Markdown for content.',
-  plugins: [
-    {
-      use: '@gridsome/source-filesystem',
-      options: {
-        index: ['README'],
-        // path: 'blog/**/*.md',
-		path: 'content/posts/*.md',
-        typeName: 'Post',
-        route: '/:slug',
-        refs: {
-          // Creates a GraphQL collection from 'tags' in front-matter and adds a reference.
-          tags: {
-            typeName: 'Tag',
-            route: '/tag/:id',
-            create: true
-          }
+    siteName: 'Gridsome Blog Starter',
+    siteDescription: 'A simple, hackable & minimalistic starter for Gridsome that uses Markdown for content.',
+    plugins: [
+        {
+            use: '@gridsome/source-filesystem',
+            options: {
+                index: ['README'],
+                // path: 'blog/**/*.md',
+                path: 'content/posts/*.md',
+                typeName: 'Post',
+                route: '/:slug',
+                refs: {
+                    // Creates a GraphQL collection from 'tags' in front-matter and adds a reference.
+                    tags: {
+                        typeName: 'Tag',
+                        route: '/tag/:id',
+                        create: true
+                    }
+                }
+            }
+        },
+    ],
+    transformers: {
+        //Add markdown support to all file-system sources
+        remark: {
+            externalLinksTarget: '_blank',
+            externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],
+            anchorClassName: 'icon icon-link',
+            plugins: [
+                '@gridsome/remark-prismjs'
+            ]
         }
-      }
     },
-  ],
-  transformers: {
-    //Add markdown support to all file-system sources
-    remark: {
-      externalLinksTarget: '_blank',
-      externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],
-      anchorClassName: 'icon icon-link',
-      plugins: [
-        '@gridsome/remark-prismjs'
-      ]
-    }
-  },
 }
