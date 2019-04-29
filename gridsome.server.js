@@ -6,7 +6,15 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = function (api) {
-    api.loadSource(store => {
+    /* api.loadSource(store => {
         // Use the Data store API here: https://gridsome.org/docs/data-store-api
-    })
+    }) */
+
+    api.loadSource(store => {
+        store.addContentType({
+            typeName: 'BlogPost',
+            route: '/blog/:year/:month/:day/:slug'
+        })
+    });
+
 }

@@ -15,7 +15,7 @@ module.exports = {
                 // path: 'blog/**/*.md',
                 path: 'content/posts/*.md',
                 typeName: 'Post',
-                route: '/:slug',
+                route: '/blog/:slug',
                 refs: {
                     // Creates a GraphQL collection from 'tags' in front-matter and adds a reference.
                     tags: {
@@ -26,6 +26,13 @@ module.exports = {
                 }
             }
         },
+        /* {
+            use: '~/src/products',
+            options: {
+                apiKey: '',
+                base: '',
+            },
+        }, */
     ],
     transformers: {
         //Add markdown support to all file-system sources

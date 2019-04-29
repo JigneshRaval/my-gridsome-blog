@@ -83,4 +83,17 @@ export default {
     title: "Hello, world!"
   }
 };
+
+fetch('https://jsonplaceholder.typicode.com/todos').then((response) => {
+            // If error then exit
+            if (response.status !== 200) {
+                console.log('Looks like there was a problem. Status Code: ' + response.status);
+                return;
+            }
+
+            // Examine the text in the response
+            this.articles = response.json();
+            console.log('DATA :', this.articles);
+            return this.articles;
+        });
 </script>
